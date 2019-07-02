@@ -35,17 +35,6 @@ class Writer extends PureComponent {
 				})
 				}
 				
-				
-				<WritterList>
-					<img className = 'image' src = '//upload.jianshu.io/users/upload_avatars/4790772/388e473c-fe2f-40e0-9301-e357ae8f1b41.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96'></img>	
-					<WritterInfo>
-						<span className = 'name'>Tea Story</span>
-						<h3 className= 'subscribe'>+subscribe </h3>
-						<h3 className = 'desc'> wrote 443.9k words. 11.5 like</h3>
-					</WritterInfo>
-					
-				</WritterList>
-				
 					
 			</WriterWrapper>
 			
