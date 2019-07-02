@@ -23,9 +23,10 @@ class Writer extends PureComponent {
 					<WritterInfo>
 						<span className = 'name'>{item.get('writterName')}</span>
 						{
-							this.props.sub ? 
-							<h3 className= 'subscribe' onClick = {this.props.handleSubs}>unsubscribe </h3> :
-							<h3 className= 'subscribe' onClick = {this.props.handleSubs}>+subscribe </h3>
+							item.get('subscribe') ?
+							<h3 className= 'subscribe' onClick = {()=>this.props.handleUnsubs(index)}>unsubscribe </h3> :
+							<h3 className= 'subscribe' onClick = {()=>this.props.handleSubs(index)}>+subscribe </h3> 
+							
 						}
 						<h3 className = 'desc'> {item.get('desc')}</h3>
 					</WritterInfo>
@@ -51,7 +52,6 @@ class Writer extends PureComponent {
 		)
 
 	}
-	
 }
 const mapState = (state)=>({
 	list: state.getIn(['home', 'writterList']),
@@ -59,8 +59,11 @@ const mapState = (state)=>({
 
 })
 const mapDispatch = (dispatch)=>({
-	handleSubs(){
-		dispatch(actionCreators.changeSub())
+	handleSubs(index){
+		dispatch(actionCreators.changeSub(index))
+	},
+	handleUnsubs(index){
+		dispatch(actionCreators.changeUnsubs(index))
 	}
 })
 

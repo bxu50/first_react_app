@@ -2,28 +2,31 @@ import { fromJS } from 'immutable';
 import * as constants from './constants';
 
 const defaultState = fromJS({
-	subscribe: false,
 	topicList: [],
 	articleList: [],
 	recommendList: [],
 	writterList: [{
 		id: 1,
 		writterName: 'lostdays',
+		subscribe: false,
 		imgUrl: '//upload.jianshu.io/users/upload_avatars/7705786/a90dc05d-63f6-4690-8c1a-dcf7ff4422df.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
 		desc: 'wrote 111.5k word. 23.1k likes'
 	},{
 		id: 2,
 		writterName: 'lostdays',
+		subscribe: false,
 		imgUrl: '//upload.jianshu.io/users/upload_avatars/7705786/a90dc05d-63f6-4690-8c1a-dcf7ff4422df.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
 		desc: 'wrote 111.5k word. 23.1k likes'
 	},{
-		id: 2,
+		id: 3,
 		writterName: 'lostdays',
+		subscribe: false,
 		imgUrl: '//upload.jianshu.io/users/upload_avatars/7705786/a90dc05d-63f6-4690-8c1a-dcf7ff4422df.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
 		desc: 'wrote 111.5k word. 23.1k likes'
 	},{
-		id: 2,
+		id: 4,
 		writterName: 'lostdays',
+		subscribe: false,
 		imgUrl: '//upload.jianshu.io/users/upload_avatars/7705786/a90dc05d-63f6-4690-8c1a-dcf7ff4422df.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
 		desc: 'wrote 111.5k word. 23.1k likes'
 	}],
@@ -55,7 +58,9 @@ export default (state = defaultState, action) => {
 		case constants.TOGGLE_SCROLL_TOP:
 			return state.set('showScroll', action.show);
 		case constants.CHANGE_SUB:
-			return state.set('subscribe', action.value)
+			return state.setIn(['writterList', action.index, 'subscribe'], fromJS(action.value));
+		case constants.CHANGE_UNSUBS:
+			return state.setIn(['writterList', action.index, 'subscribe'], fromJS(action.value));
 		default:
 			return state;
 	}

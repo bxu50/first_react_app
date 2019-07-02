@@ -14,9 +14,16 @@ const addHomeList = (list, nextPage) => ({
 	list: fromJS(list),
 	nextPage
 })
-export const changeSub = ()=>({
+export const changeSub = (index)=>({
 	type: constants.CHANGE_SUB,
-	value: true
+	value: true,
+	index
+})
+
+export const changeUnsubs = (index)=>({
+	type: constants.CHANGE_UNSUBS,
+	value: false,
+	index
 })
 
 
